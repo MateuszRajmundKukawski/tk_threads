@@ -107,6 +107,7 @@ class GisThread(threading.Thread):
     def __init__(self, file_path):
         threading.Thread.__init__(self)
         self.file_path = file_path
+	self.daemon = True 
     def run(self):
         file2qgis = GisTools()
         file2qgis.export2qgis(self.file_path)
