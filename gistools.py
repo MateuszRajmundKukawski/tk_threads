@@ -1,3 +1,5 @@
+import time
+
 
 class GisTools(object):
     def export2qgis(self, workfile):
@@ -6,6 +8,9 @@ class GisTools(object):
             filedata = (line.rstrip('\n') for line in f)
             for line in filedata:
                 print line
+        for i in range(10):
+            print i+1
+            time.sleep(1)
 
 
 

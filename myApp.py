@@ -2,6 +2,7 @@
 from Tkinter import *
 import tkMessageBox
 from tkFileDialog import askopenfilename
+import threading
 
 from gistools import GisTools
 import os
@@ -97,8 +98,19 @@ class MyApp(Frame):
         """
 
         self.runApp_text.set('...')
+        GisThread(self.file_fullpath).start()
+
+
+
+
+class GisThread(threading.Thread):
+    def __init__(self, file_path):
+        threading.Thread.__init__(self)
+        self.file_path = file_path
+    def run(self):
         file2qgis = GisTools()
-        file2qgis.export2qgis(self.file_fullpath)
+        file2qgis.export2qgis(self.file_path)
+
 
 
 
